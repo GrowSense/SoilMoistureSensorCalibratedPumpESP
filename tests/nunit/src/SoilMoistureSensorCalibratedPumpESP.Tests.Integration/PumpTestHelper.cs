@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class PumpTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class PumpTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public PumpMode PumpCommand = PumpMode.Auto;
         public int SimulatedSoilMoisturePercentage = 50;

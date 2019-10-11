@@ -2,7 +2,7 @@
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class SerialCommandTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class SerialCommandTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public string Key = "";
         public string Value = "0";

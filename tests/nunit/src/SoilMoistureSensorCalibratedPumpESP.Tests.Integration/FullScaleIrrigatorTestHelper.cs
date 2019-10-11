@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class FullScaleIrrigatorTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class FullScaleIrrigatorTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public int PumpOnIncreaseValue = 8;
         public int PumpOffDecreaseValue = 5;

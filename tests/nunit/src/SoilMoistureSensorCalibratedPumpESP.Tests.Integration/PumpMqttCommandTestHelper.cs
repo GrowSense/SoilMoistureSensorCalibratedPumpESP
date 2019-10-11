@@ -2,7 +2,7 @@
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class PumpMqttCommandTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class PumpMqttCommandTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public PumpMode PumpCommand = PumpMode.Auto;
 
