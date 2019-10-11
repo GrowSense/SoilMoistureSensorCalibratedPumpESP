@@ -2,7 +2,7 @@
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class PumpBurstOnTimeMqttCommandTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class PumpBurstOnTimeMqttCommandTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public int PumpBurstOnTime = 1;
 

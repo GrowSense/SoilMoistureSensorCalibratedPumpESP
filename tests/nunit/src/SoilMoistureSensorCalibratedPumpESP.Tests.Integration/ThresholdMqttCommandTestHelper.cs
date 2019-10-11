@@ -2,7 +2,7 @@
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class ThresholdMqttCommandTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class ThresholdMqttCommandTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public int Threshold = 30;
 

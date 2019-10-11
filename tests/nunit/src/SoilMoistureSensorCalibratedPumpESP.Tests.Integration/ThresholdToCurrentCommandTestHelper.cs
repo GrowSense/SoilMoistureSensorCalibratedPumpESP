@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 {
-    public class ThresholdToCurrentCommandTestHelper : GreenSenseIrrigatorHardwareTestHelper
+    public class ThresholdToCurrentCommandTestHelper : GrowSenseIrrigatorHardwareTestHelper
     {
         public int Threshold = 30;
         public int SimulatedSoilMoisturePercentage = -1;
