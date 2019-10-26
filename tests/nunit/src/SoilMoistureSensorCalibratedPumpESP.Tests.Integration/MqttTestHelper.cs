@@ -279,7 +279,7 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
     public string GetTopicKey (string topic)
     {
       var parts = topic.Split ('/');
-      var key = parts [2];
+      var key = parts [1];
 
       return key;
     }
