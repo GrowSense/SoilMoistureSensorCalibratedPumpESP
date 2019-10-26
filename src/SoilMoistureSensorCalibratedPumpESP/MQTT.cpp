@@ -102,8 +102,7 @@ void setupMqttSubscriptions()
 {
   Serial.println("Setting up MQTT subscriptions...");
 
-  String baseTopic = "/";
-  baseTopic += mqttDeviceName;
+  String baseTopic = mqttDeviceName;
   baseTopic += "/";
 
   Serial.print("  Total subscribe topics: ");
@@ -144,8 +143,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
 
   Serial.println();
 
-  String prefix = "/";
-  prefix += mqttDeviceName;
+  String prefix = mqttDeviceName;
   prefix += "/";
 
   String postFix = "/in";
@@ -373,8 +371,7 @@ void setMqttPort(char* port)
 /* MQTT Publish */
 void publishMqttValue(char* subTopic, char* value)
 {
-  String topic = "/";
-  topic += mqttDeviceName;
+  String topic = mqttDeviceName;
   topic += "/";
   topic += subTopic;
 
@@ -384,8 +381,7 @@ void publishMqttValue(char* subTopic, char* value)
 
 void publishMqttValue(char* subTopic, String value)
 {
-  String topic = "/";
-  topic += mqttDeviceName;
+  String topic = mqttDeviceName;
   topic += "/";
   topic += subTopic;
   
@@ -398,7 +394,7 @@ void publishMqttValue(char* subTopic, String value)
 
 void publishMqttPush(int soilMoistureValue)
 {
-  String topic = "/push/";
+  String topic = "push/";
   topic += mqttDeviceName;
 
   char valueString[16];
