@@ -3,6 +3,7 @@
 #include "WiFi.h"
 #include "MQTT.h"
 #include "EEPROMHelper.h"
+#include "Irrigation.h"
 
 #define MQTT_HOST_EEPROM_FLAG_ADDRESS 140
 #define MQTT_HOST_EEPROM_ADDRESS 141
@@ -188,6 +189,8 @@ void mqttPublishData()
     publishMqttValue("I", soilMoistureSensorReadingIntervalInSeconds);
     publishMqttValue("D", drySoilMoistureCalibrationValue);
     publishMqttValue("W", wetSoilMoistureCalibrationValue);
+    publishMqttValue("B", pumpBurstOnTime);
+    publishMqttValue("O", pumpBurstOffTime);
     publishMqttValue("V", VERSION);
     publishMqttValue("Time", timeClient.getFormattedTime());
     publishMqttPush(soilMoistureLevelCalibrated);
