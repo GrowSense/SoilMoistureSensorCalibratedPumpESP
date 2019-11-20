@@ -93,8 +93,6 @@ void handleCommand(char* msg)
   {
     char letter = msg[0];
 
-    int length = strlen(msg);
-
     switch (letter)
     {
       case '#':

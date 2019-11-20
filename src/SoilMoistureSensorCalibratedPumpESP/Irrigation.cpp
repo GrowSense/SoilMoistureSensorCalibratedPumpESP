@@ -13,8 +13,8 @@ int threshold = 30;
 bool pumpIsOn = 0;
 unsigned long pumpStartTime = 0;
 unsigned long lastPumpFinishTime = 0;
-int pumpBurstOnTime = 3;
-int pumpBurstOffTime = 5;
+long pumpBurstOnTime = 3;
+long pumpBurstOffTime = 5;
 
 int pumpStatus = PUMP_STATUS_AUTO;
 
