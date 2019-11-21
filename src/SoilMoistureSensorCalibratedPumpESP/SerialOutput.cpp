@@ -47,8 +47,8 @@ void serialPrintData()
     Serial.print("T:");
     Serial.print(threshold);
     Serial.print(";");
-    Serial.print("P:");
-    Serial.print(pumpStatus);
+    Serial.print("M:");
+    Serial.print(pumpMode);
     Serial.print(";");
     Serial.print("I:");
     Serial.print(soilMoistureSensorReadingIntervalInSeconds);

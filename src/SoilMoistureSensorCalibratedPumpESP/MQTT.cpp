@@ -27,7 +27,7 @@ String mqttDeviceName = "wiFiIrrigator1";
 long mqttPort = 1883;
 
 int totalSubscribeTopics = 9;
-String subscribeTopics[] = {"D", "W", "T", "I", "P", "B", "O", "F", "Q"};
+String subscribeTopics[] = {"D", "W", "T", "I", "M", "B", "O", "F", "Q"};
 
 PubSubClient pubSubClient(wifiClient);
 
@@ -189,6 +189,8 @@ void mqttPublishData()
     publishMqttValue("I", soilMoistureSensorReadingIntervalInSeconds);
     publishMqttValue("D", drySoilMoistureCalibrationValue);
     publishMqttValue("W", wetSoilMoistureCalibrationValue);
+    publishMqttValue("T", threshold);
+    publishMqttValue("M", pumpMode);
     publishMqttValue("B", pumpBurstOnTime);
     publishMqttValue("O", pumpBurstOffTime);
     publishMqttValue("V", VERSION);

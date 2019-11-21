@@ -101,8 +101,8 @@ void handleCommand(char* msg)
       case '!': // Disable WiFi and MQTT to speed up tests which don't require them
         disableWiFi();
         disableMqtt();
-      case 'P':
-        setPumpStatus(msg);
+      case 'M':
+        setPumpMode(msg);
         break;
       case 'T':
         setThreshold(msg);
@@ -127,17 +127,17 @@ void handleCommand(char* msg)
         break;
       case 'N':
         Serial.println("Turning pump on");
-        pumpStatus = PUMP_STATUS_ON;
+        pumpMode = PUMP_MODE_ON;
         pumpOn();
         break;
       case 'F':
         Serial.println("Turning pump off");
-        pumpStatus = PUMP_STATUS_OFF;
+        pumpMode = PUMP_MODE_OFF;
         pumpOff();
         break;
       case 'A':
         Serial.println("Turning pump to auto");
-        pumpStatus = PUMP_STATUS_AUTO;
+        pumpMode = PUMP_MODE_AUTO;
         irrigateIfNeeded();
         break;
       case 'Z':
