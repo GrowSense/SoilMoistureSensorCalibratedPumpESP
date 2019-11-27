@@ -46,7 +46,7 @@ void setupMqtt()
     loadMqttSettingsFromEEPROM();
 
     bool isTimeToConnectToMqtt = isWiFiConnected && !isMqttConnected
-              && (lastMqttConnectionAttemptTime == 0 || lastMqttConnectionAttemptTime + mqttConnectionAttemptInterval < millis());
+              && (lastMqttConnectionAttemptTime == 0 || hasDelayElapsed(mqttConnectionAttemptInterval, lastMqttConnectionAttemptTime));
 
     if (isTimeToConnectToMqtt)
     {
