@@ -4,6 +4,7 @@
 #include "Common.h"
 #include "SoilMoistureSensor.h"
 #include "Irrigation.h"
+#include "MQTT.h"
 
 void serialPrintDeviceInfo()
 {
@@ -14,6 +15,8 @@ void serialPrintDeviceInfo()
   Serial.println("Project: SoilMoistureSensorCalibratedPumpESP");
   Serial.print("Board: ");
   Serial.println(BOARD_TYPE);
+  Serial.print("Device name: ");
+  Serial.println(mqttDeviceName);
   Serial.print("Version: ");
   Serial.println(VERSION);
   Serial.println("ScriptCode: irrigator");
