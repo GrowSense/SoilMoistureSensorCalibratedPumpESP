@@ -12,12 +12,15 @@
 #include "SoilMoistureSensor.h"
 #include "SerialOutput.h"
 #include "Irrigation.h"
+#include "DeviceName.h"
 
 void setup()
 {
   Serial.begin(9600);
 
   Serial.println("Starting WiFi irrigator");
+  
+  loadDeviceNameFromEEPROM();
   
   serialPrintDeviceInfo();
   

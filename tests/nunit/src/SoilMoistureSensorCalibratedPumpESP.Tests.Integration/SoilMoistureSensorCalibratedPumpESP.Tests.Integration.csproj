@@ -98,6 +98,7 @@
     <Compile Include="PumpModeCommandTestHelper.cs" />
     <Compile Include="PumpModeMqttCommandTestFixture.cs" />
     <Compile Include="PumpModeMqttCommandTestHelper.cs" />
+    <Compile Include="DeviceNameCommandTestFixture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

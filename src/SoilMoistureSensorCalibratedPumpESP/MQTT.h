@@ -12,11 +12,6 @@ extern PubSubClient client;
 extern String mqttHost;
 extern String mqttUsername;
 extern String mqttPassword;
-extern String mqttDeviceName;
-//extern char* mqttHost;
-//extern char* mqttUsername;
-//extern char* mqttPassword;
-//extern char* mqttDeviceName;
 extern long mqttPort;
 
 extern bool areMqttSettingsLoadedFromEEPROM;

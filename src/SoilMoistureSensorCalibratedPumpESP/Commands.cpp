@@ -3,6 +3,7 @@
 
 #include "Commands.h"
 #include "Irrigation.h"
+#include "DeviceName.h"
 
 void checkCommand()
 {
@@ -82,11 +83,11 @@ void handleCommand(char* msg)
         Serial.println("  Set MQTT port command");
       setMqttPort(value);
     }
-    else if (strcmp(key, "MDevice") == 0)
+    else if (strcmp(key, "Name") == 0)
     {
       if (isDebugMode)
-        Serial.println("  Set MQTT device name");
-      setMqttDeviceName(value);
+        Serial.println("  Device name");
+      setDeviceName(value);
     }
   }
   else

@@ -13,9 +13,6 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
         public bool CheckExpectedSerialOutput = false;
         public bool SeparateKeyValueWithColon = false;
 
-        public SerialCommandTestHelper ()
-        {
-        }
 
         public void TestCommand ()
         {

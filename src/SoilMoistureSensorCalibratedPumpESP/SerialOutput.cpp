@@ -16,7 +16,7 @@ void serialPrintDeviceInfo()
   Serial.print("Board: ");
   Serial.println(BOARD_TYPE);
   Serial.print("Device name: ");
-  Serial.println(mqttDeviceName);
+  Serial.println(deviceName);
   Serial.print("Version: ");
   Serial.println(VERSION);
   Serial.println("ScriptCode: irrigator");
