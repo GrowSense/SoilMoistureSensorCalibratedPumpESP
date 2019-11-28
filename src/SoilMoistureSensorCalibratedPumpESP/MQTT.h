@@ -44,7 +44,6 @@ void setMqttHost(char* host);
 void setMqttUsername(char* username);
 void setMqttPassword(char* password);
 void setMqttPort(char* port);
-void setMqttDeviceName(char* password);
 
 void loadMqttSettingsFromEEPROM();
 

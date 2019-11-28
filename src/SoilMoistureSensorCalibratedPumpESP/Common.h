@@ -4,8 +4,6 @@
 #define VERSION "1-0-0-1"
 #define BOARD_TYPE "esp"
 
-extern String deviceName;
-
 extern const int ANALOG_MAX;
 
 extern unsigned long lastSerialOutputTime; // Milliseconds
@@ -25,7 +23,5 @@ long readLong(char* text, int startPosition, int digitCount);
 int readInt(char* text, int startPosition, int digitCount);
 
 bool hasDelayElapsed(long interval, unsigned long previousTime);
-
-void setDeviceName(char* newName);
 
 #endif

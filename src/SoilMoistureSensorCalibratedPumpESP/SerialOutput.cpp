@@ -5,6 +5,7 @@
 #include "SoilMoistureSensor.h"
 #include "Irrigation.h"
 #include "MQTT.h"
+#include "DeviceName.h"
 
 void serialPrintDeviceInfo()
 {
