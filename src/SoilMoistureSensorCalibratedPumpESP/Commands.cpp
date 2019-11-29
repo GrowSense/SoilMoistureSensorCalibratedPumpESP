@@ -4,6 +4,7 @@
 #include "Commands.h"
 #include "Irrigation.h"
 #include "DeviceName.h"
+#include "MQTT.h"
 
 void checkCommand()
 {
@@ -88,6 +89,9 @@ void handleCommand(char* msg)
       if (isDebugMode)
         Serial.println("  Device name");
       setDeviceName(value);
+      
+      // Disconnected MQTT and forcee it to reconnect
+      disconnectMqtt();
     }
   }
   else

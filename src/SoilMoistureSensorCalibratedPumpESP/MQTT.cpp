@@ -26,7 +26,7 @@ long mqttPort = 1883;
 int totalSubscribeTopics = 9;
 String subscribeTopics[] = {"D", "W", "T", "I", "M", "B", "O", "F", "Q"};
 
-PubSubClient pubSubClient(wifiClient);
+PubSubClient mqttClient(wifiClient);
 
 bool isMqttEnabled = true;
 bool isMqttConnected = false;
@@ -55,11 +55,11 @@ void setupMqtt()
     
       mqttHost.toCharArray(hostBuffer, mqttHost.length()+1);
       
-      pubSubClient.setServer(hostBuffer, mqttPort);
+      mqttClient.setServer(hostBuffer, mqttPort);
 
-      pubSubClient.setCallback(mqttCallback);
+      mqttClient.setCallback(mqttCallback);
 
-      if (!pubSubClient.connected()) {
+      if (!mqttClient.connected()) {
         Serial.println("Connecting to MQTT...");
         Serial.print("  MQTT host: ");
         Serial.println(mqttHost);
@@ -81,7 +81,7 @@ void setupMqtt()
         mqttUsername.toCharArray(usernameBuffer, mqttUsername.length()+1);
         mqttPassword.toCharArray(passwordBuffer, mqttPassword.length()+1);
       
-        if (pubSubClient.connect(deviceNameBuffer, usernameBuffer, passwordBuffer)) {
+        if (mqttClient.connect(deviceNameBuffer, usernameBuffer, passwordBuffer)) {
           Serial.println("  Connected to MQTT");  
 
           isMqttConnected = true;
@@ -89,7 +89,7 @@ void setupMqtt()
           setupMqttSubscriptions();
         } else {
           Serial.print("  Failed to connect to MQTT. State: ");
-          Serial.println(pubSubClient.state());
+          Serial.println(mqttClient.state());
         }
       }
     }
@@ -113,7 +113,7 @@ void setupMqttSubscriptions()
     Serial.print("  ");
     Serial.println(topic);
 
-    pubSubClient.subscribe(topic.c_str());
+    mqttClient.subscribe(topic.c_str());
   }
   
   Serial.println("Subscribed to MQTT topics");
@@ -292,8 +292,7 @@ void setMqttHost(char* host)
   
   lastMqttConnectionAttemptTime = 0;
 
-  pubSubClient.disconnect();
-  isMqttConnected = false;
+  disconnectMqtt();
 }
 
 void setMqttUsername(char* username)
@@ -307,8 +306,7 @@ void setMqttUsername(char* username)
   
   lastMqttConnectionAttemptTime = 0;
   
-  pubSubClient.disconnect();
-  isMqttConnected = false;
+  disconnectMqtt();
 }
 
 void setMqttPassword(char* password)
@@ -322,8 +320,7 @@ void setMqttPassword(char* password)
   
   lastMqttConnectionAttemptTime = 0;
   
-  pubSubClient.disconnect();
-  isMqttConnected = false;
+  disconnectMqtt();
 }
 
 void setMqttPort(char* port)
@@ -337,8 +334,7 @@ void setMqttPort(char* port)
   
   lastMqttConnectionAttemptTime = 0;
   
-  pubSubClient.disconnect();
-  isMqttConnected = false;
+  disconnectMqtt();
 }
 
 /* MQTT Publish */
@@ -348,7 +344,7 @@ void publishMqttValue(char* subTopic, char* value)
   topic += "/";
   topic += subTopic;
 
-  pubSubClient.publish(topic.c_str(), value, true);
+  mqttClient.publish(topic.c_str(), value, true);
 
 }
 
@@ -361,7 +357,7 @@ void publishMqttValue(char* subTopic, String value)
   char valueArray[16];
   value.toCharArray(valueArray, 12);
 
-  pubSubClient.publish(topic.c_str(), valueArray, true);
+  mqttClient.publish(topic.c_str(), valueArray, true);
 
 }
 
@@ -373,7 +369,7 @@ void publishMqttPush(int soilMoistureValue)
   char valueString[16];
   itoa(soilMoistureValue, valueString, 10);
   
-  pubSubClient.publish(topic.c_str(), valueString, true);
+  mqttClient.publish(topic.c_str(), valueString, true);
 
 }
 
@@ -384,7 +380,7 @@ void loopMqtt()
 
   if (isWiFiConnected && isMqttConnected)
   {
-    if (!pubSubClient.loop())
+    if (!mqttClient.loop())
     {
       Serial.println("MQTT is not connected");
       isMqttConnected = false;
@@ -396,7 +392,7 @@ void disableMqtt()
 {
   lastMqttConnectionAttemptTime = 0;
 
-  pubSubClient.disconnect();
+  mqttClient.disconnect();
   isMqttConnected = false;
   
   isMqttEnabled = false;
@@ -405,4 +401,10 @@ void disableMqtt()
 void forceMqttOutput()
 {
   soilMoistureSensorReadingHasBeenTaken = true;
+}
+
+void disconnectMqtt()
+{
+  mqttClient.disconnect();
+  isMqttConnected = false;
 }
