@@ -8,7 +8,7 @@
 #define DEVICE_NAME_EEPROM_FLAG_ADDRESS 210
 #define DEVICE_NAME_EEPROM_ADDRESS 211
 
-String deviceName = "wiFiIrrigator1";
+String deviceName = "NewIrrigatorW";
 
 void setDeviceName(char* newName)
 {
