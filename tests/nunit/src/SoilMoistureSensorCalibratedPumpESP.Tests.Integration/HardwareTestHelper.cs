@@ -548,6 +548,8 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 
         public virtual void AssertDataValueIsWithinRange (Dictionary<string, string> dataEntry, string dataKey, int expectedValue, int allowableMarginOfError)
         {
+            Assert.IsTrue (dataEntry.ContainsKey (dataKey), "The data key '" + dataKey + "' wasn't found in the data entry.");
+    
             var value = Convert.ToInt32 (dataEntry [dataKey]);
 
             var isWithinRange = IsWithinRange (expectedValue, value, allowableMarginOfError);
