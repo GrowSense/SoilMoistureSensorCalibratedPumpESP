@@ -78,7 +78,7 @@ void serialPrintData()
     Serial.print("WC:");
     Serial.print(isWiFiConnected);
     Serial.print(";");
-    Serial.print("MC");
+    Serial.print("MC:");
     Serial.print(isMqttConnected);
     Serial.print(";");
     Serial.print("V:");

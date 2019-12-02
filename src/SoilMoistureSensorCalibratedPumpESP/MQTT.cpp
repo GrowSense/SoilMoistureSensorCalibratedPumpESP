@@ -87,6 +87,8 @@ void setupMqtt()
           isMqttConnected = true;
 
           setupMqttSubscriptions();
+          
+          delay(500);
         } else {
           Serial.print("  Failed to connect to MQTT. State: ");
           Serial.println(mqttClient.state());
@@ -118,6 +120,25 @@ void setupMqttSubscriptions()
   
   Serial.println("Subscribed to MQTT topics");
   Serial.println();
+}
+
+void loopMqtt()
+{
+  // MQTT setup is attempted each loop until connected, then it's skipped
+  setupMqtt();
+
+  if (isWiFiConnected && isMqttConnected)
+  {
+    if (!mqttClient.connected())
+    {
+      Serial.println("MQTT is not connected");
+      isMqttConnected = false;
+    }
+    else
+    {
+      mqttClient.loop();
+    }
+  }
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
@@ -365,21 +386,6 @@ void publishMqttPush(int soilMoistureValue)
 
 }
 
-void loopMqtt()
-{
-  // MQTT setup is attempted each loop until connected, then it's skipped
-  setupMqtt();
-
-  if (isWiFiConnected && isMqttConnected)
-  {
-    if (!mqttClient.loop())
-    {
-      Serial.println("MQTT is not connected");
-      isMqttConnected = false;
-    }
-  }
-}
-
 void disableMqtt()
 {
   disconnectMqtt();
@@ -394,6 +400,7 @@ void forceMqttOutput()
 
 void disconnectMqtt()
 {
+  Serial.println("Disconnecting from MQTT...");
   lastMqttConnectionAttemptTime = 0;
   mqttClient.disconnect();
   isMqttConnected = false;

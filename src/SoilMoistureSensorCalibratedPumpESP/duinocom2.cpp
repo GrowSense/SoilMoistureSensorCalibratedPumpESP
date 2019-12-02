@@ -39,8 +39,7 @@ bool checkMsgReady()
 
       isMsgReady = true;
       
-      for (int i = msgPosition; i < MAX_MSG_LENGTH; i++)
-        msgBuffer[i] = '\0';
+      msgBuffer[msgPosition] = '\0';
         
       msgPosition = 0;
 
