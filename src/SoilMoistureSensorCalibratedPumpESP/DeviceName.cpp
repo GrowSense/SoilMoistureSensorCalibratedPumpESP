@@ -4,6 +4,7 @@
 #include "DeviceName.h"
 #include "Common.h"
 #include "EEPROMHelper.h"
+#include "MQTT.h"
 
 #define DEVICE_NAME_EEPROM_FLAG_ADDRESS 210
 #define DEVICE_NAME_EEPROM_ADDRESS 211
@@ -18,6 +19,8 @@ void setDeviceName(char* newName)
   deviceName = newName;
   
   EEPROMWriteCharsAndSetFlag(DEVICE_NAME_EEPROM_FLAG_ADDRESS, DEVICE_NAME_EEPROM_ADDRESS, newName);
+  
+  disconnectMqtt();
 }
 
 void loadDeviceNameFromEEPROM()

@@ -89,9 +89,6 @@ void handleCommand(char* msg)
       if (isDebugMode)
         Serial.println("  Device name");
       setDeviceName(value);
-      
-      // Disconnected MQTT and forcee it to reconnect
-      disconnectMqtt();
     }
   }
   else

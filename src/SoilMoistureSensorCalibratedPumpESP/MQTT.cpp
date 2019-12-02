@@ -290,8 +290,6 @@ void setMqttHost(char* host)
   
   EEPROMWriteCharsAndSetFlag(MQTT_HOST_EEPROM_FLAG_ADDRESS, MQTT_HOST_EEPROM_ADDRESS, host);
   
-  lastMqttConnectionAttemptTime = 0;
-
   disconnectMqtt();
 }
 
@@ -303,8 +301,6 @@ void setMqttUsername(char* username)
   mqttUsername = username;
   
   EEPROMWriteCharsAndSetFlag(MQTT_USERNAME_EEPROM_FLAG_ADDRESS, MQTT_USERNAME_EEPROM_ADDRESS, username);
-  
-  lastMqttConnectionAttemptTime = 0;
   
   disconnectMqtt();
 }
@@ -318,8 +314,6 @@ void setMqttPassword(char* password)
   
   EEPROMWriteCharsAndSetFlag(MQTT_PASSWORD_EEPROM_FLAG_ADDRESS, MQTT_PASSWORD_EEPROM_ADDRESS, password);
   
-  lastMqttConnectionAttemptTime = 0;
-  
   disconnectMqtt();
 }
 
@@ -331,9 +325,7 @@ void setMqttPort(char* port)
   mqttPort = readLong(port, 0, strlen(port));
   
   EEPROMWriteLongAndSetFlag(MQTT_PORT_EEPROM_FLAG_ADDRESS, MQTT_PORT_EEPROM_ADDRESS, mqttPort);
-  
-  lastMqttConnectionAttemptTime = 0;
-  
+    
   disconnectMqtt();
 }
 
@@ -390,10 +382,7 @@ void loopMqtt()
 
 void disableMqtt()
 {
-  lastMqttConnectionAttemptTime = 0;
-
-  mqttClient.disconnect();
-  isMqttConnected = false;
+  disconnectMqtt();
   
   isMqttEnabled = false;
 }
@@ -405,6 +394,7 @@ void forceMqttOutput()
 
 void disconnectMqtt()
 {
+  lastMqttConnectionAttemptTime = 0;
   mqttClient.disconnect();
   isMqttConnected = false;
 }

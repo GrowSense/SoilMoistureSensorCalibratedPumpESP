@@ -66,17 +66,20 @@ void serialPrintData()
     Serial.print("WN:"); // Water needed
     Serial.print(soilMoistureLevelCalibrated < threshold);
     Serial.print(";");
-    Serial.print("PO:"); // Pump on
+    Serial.print("PO:");
     Serial.print(pumpIsOn);
     Serial.print(";");
-    //Serial.print("SSPO:"); // Seconds since pump on
-    //Serial.print((millis() - lastPumpFinishTime) / 1000);
-    //Serial.print(";");
-    Serial.print("D:"); // Dry calibration value
+    Serial.print("D:"); 
     Serial.print(drySoilMoistureCalibrationValue);
     Serial.print(";");
-    Serial.print("W:"); // Wet calibration value
+    Serial.print("W:");
     Serial.print(wetSoilMoistureCalibrationValue);
+    Serial.print(";");
+    Serial.print("WC:");
+    Serial.print(isWiFiConnected);
+    Serial.print(";");
+    Serial.print("MC");
+    Serial.print(isMqttConnected);
     Serial.print(";");
     Serial.print("V:");
     Serial.print(VERSION);
