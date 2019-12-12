@@ -24,11 +24,12 @@ unsigned long lastSoilMoistureSensorReadingTime = 0; // Milliseconds
 int soilMoistureLevelCalibrated = 0;
 int soilMoistureLevelRaw = 0;
 
-bool reverseSoilMoistureSensor = true;
+// TODO: Clean up code
+//bool reverseSoilMoistureSensor = true;
 //int drySoilMoistureCalibrationValue = ANALOG_MAX;
-int drySoilMoistureCalibrationValue = (reverseSoilMoistureSensor ? 0 : ANALOG_MAX);
+int drySoilMoistureCalibrationValue = 830; // (reverseSoilMoistureSensor ? 0 : ANALOG_MAX);
 //int wetSoilMoistureCalibrationValue = 0;
-int wetSoilMoistureCalibrationValue = (reverseSoilMoistureSensor ? ANALOG_MAX : 0);
+int wetSoilMoistureCalibrationValue = 440; //(reverseSoilMoistureSensor ? ANALOG_MAX : 0);
 
 #define soilMoistureSensorIsCalibratedFlagAddress 1
 #define drySoilMoistureCalibrationValueAddress 2
@@ -320,8 +321,8 @@ void setupCalibrationValues()
     if (soilMoistureSensorType == SOIL_MOISTURE_SENSOR_TYPE_CAPACITIVE)
     {
       Serial.println("Adjusting calibration values for capacitive sensor");
-      drySoilMoistureCalibrationValue = 570;
-      wetSoilMoistureCalibrationValue = 260;
+      drySoilMoistureCalibrationValue = 830;
+      wetSoilMoistureCalibrationValue = 440;
     }
     
     
@@ -507,8 +508,9 @@ void restoreDefaultCalibrationSettings()
 {
   removeEEPROMIsCalibratedFlag();
 
-  drySoilMoistureCalibrationValue = (reverseSoilMoistureSensor ? 0 : ANALOG_MAX);
-  wetSoilMoistureCalibrationValue = (reverseSoilMoistureSensor ? ANALOG_MAX : 0);
+  // TODO: Clean up
+  drySoilMoistureCalibrationValue = 830; //(reverseSoilMoistureSensor ? 0 : ANALOG_MAX);
+  wetSoilMoistureCalibrationValue = 440; //(reverseSoilMoistureSensor ? ANALOG_MAX : 0);
   
   // TODO: Remove or reimplement. Disabled so it doesn't mess with tests.
   /*if (soilMoistureSensorType == SOIL_MOISTURE_SENSOR_TYPE_CAPACITIVE)

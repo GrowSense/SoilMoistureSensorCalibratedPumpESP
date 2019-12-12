@@ -42,6 +42,9 @@ void serialPrintData()
     }
 
     Serial.print("D;"); // This prefix indicates that the line contains data.
+    Serial.print("Name:");
+    Serial.print(deviceName);
+    Serial.print(";");
     Serial.print("R:");
     Serial.print(soilMoistureLevelRaw);
     Serial.print(";");
