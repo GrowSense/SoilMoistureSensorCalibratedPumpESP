@@ -88,7 +88,7 @@ void setupMqtt()
 
           setupMqttSubscriptions();
           
-          delay(500);
+          //delay(500);
         } else {
           Serial.print("  Failed to connect to MQTT. State: ");
           Serial.println(mqttClient.state());
