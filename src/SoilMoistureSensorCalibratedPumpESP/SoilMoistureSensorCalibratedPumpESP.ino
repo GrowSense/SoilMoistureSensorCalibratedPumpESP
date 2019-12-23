@@ -20,13 +20,13 @@ void setup()
 
   Serial.println("Starting WiFi irrigator");
   
+  EEPROM.begin(512);
+  
   loadDeviceNameFromEEPROM();
   
   serialPrintDeviceInfo();
   
   Serial.println("Device started...");
-  
-  EEPROM.begin(512);
 
   setupSoilMoistureSensor();
 
