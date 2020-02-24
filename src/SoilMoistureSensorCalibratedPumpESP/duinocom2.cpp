@@ -38,9 +38,9 @@ bool checkMsgReady()
       //}
 
       isMsgReady = true;
-      
+
       msgBuffer[msgPosition] = '\0';
-        
+
       msgPosition = 0;
 
       //if (verboseCom)
@@ -141,11 +141,11 @@ void readSubstring(char msg[MAX_MSG_LENGTH], int startPosition, int length, char
 
     //if (verboseCom)
     //  Serial.println(output[i]);
-    
+
     if (i == length-1)
       output[i+1] = '\0';
   }
-  
+
   /*if (verboseCom)
   {
     Serial.print("  Output: ");
@@ -188,15 +188,15 @@ char* getKey(char msg[MAX_MSG_LENGTH])
     Serial.print("  Key end position: ");
     Serial.println(keyEndPosition);
   }*/
-  
+
   readSubstring(msg, 0, keyEndPosition, keyBuffer);
-  
+
   /*if (verboseCom)
   {
     Serial.print("  Key: ");
     Serial.println(keyBuffer);
   }*/
-  
+
   return keyBuffer;
 }
 
@@ -230,23 +230,23 @@ char* getValue(char msg[MAX_MSG_LENGTH])
     Serial.print("  Value start position: ");
     Serial.println(valueStartPosition);
   }*/
-  
+
   //int valueLength = indexOf(msg, '\n')-valueStartPosition;
-  
+
   /*if (verboseCom)
   {
     Serial.print("  Value length: ");
     Serial.println(valueLength);
   }*/
-  
+
   readSubstring(msg, valueStartPosition, valueLength, valueBuffer);
-  
+
   /*if (verboseCom)
   {
     Serial.print("  Value: ");
     Serial.println(valueBuffer);
   }*/
-  
+
   return valueBuffer;
 }
 

@@ -19,13 +19,15 @@ void setup()
   Serial.begin(9600);
 
   Serial.println("Starting WiFi irrigator");
-  
+
   EEPROM.begin(512);
-  
+
+  //checkCommand();
+
   loadDeviceNameFromEEPROM();
-  
+
   serialPrintDeviceInfo();
-  
+
   Serial.println("Device started...");
 
   setupSoilMoistureSensor();
@@ -33,7 +35,7 @@ void setup()
   setupIrrigation();
 
   serialOutputIntervalInSeconds = soilMoistureSensorReadingIntervalInSeconds;
-  
+
   delay(200);
 }
 
@@ -48,9 +50,9 @@ void loop()
   serialPrintLoopHeader();
 
   checkCommand();
-  
+
   loopWiFi();
-  
+
   loopMqtt();
 
   takeSoilMoistureSensorReading();
@@ -65,6 +67,6 @@ void loop()
   soilMoistureSensorReadingHasBeenTaken = false;
 
   serialPrintLoopFooter();
-  
+
   delay(1);
 }
