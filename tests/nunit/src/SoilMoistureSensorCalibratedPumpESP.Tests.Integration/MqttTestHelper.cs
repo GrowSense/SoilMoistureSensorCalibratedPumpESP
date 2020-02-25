@@ -182,7 +182,7 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
       var inTopic = DeviceName + "/" + key + "/in";
 
       Console.WriteLine ("Topic: " + inTopic);
-      Client.Publish (inTopic, Encoding.UTF8.GetBytes (value.ToString ()));
+      Client.Publish (inTopic, Encoding.UTF8.GetBytes (value.ToString ()), 0, true);
       Console.WriteLine ("");
 
       Hardware.WaitForMessageReceived (key + value);
