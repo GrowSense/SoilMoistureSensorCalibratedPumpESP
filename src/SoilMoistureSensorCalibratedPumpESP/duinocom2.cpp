@@ -59,8 +59,8 @@ bool checkMsgReady()
     }
     else // Message bytes
     {
-      //if (msgPosition == 0)
-      //  clearMsg(msgBuffer);
+      if (msgPosition == 0)
+        clearMsg(msgBuffer);
 
       msgBuffer[msgPosition] = b;
       msgLength = msgPosition+1;

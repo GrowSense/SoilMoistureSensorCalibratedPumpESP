@@ -129,7 +129,14 @@ void loopMqtt()
 
   if (isWiFiConnected && isMqttConnected)
   {
-    if (!mqttClient.connected())
+    if (!mqttClient.loop())
+    {
+      Serial.println("MQTT is not connected");
+      isMqttConnected = false;
+    }
+
+    // TODO: Remove if not needed. Should be obsolete.
+    /*if (!mqttClient.connected())
     {
       Serial.println("MQTT is not connected");
       isMqttConnected = false;
@@ -137,7 +144,7 @@ void loopMqtt()
     else
     {
       mqttClient.loop();
-    }
+    }*/
   }
 }
 
@@ -388,7 +395,10 @@ void publishMqttPush(int soilMoistureValue)
 
 void disableMqtt()
 {
-  disconnectMqtt();
+  lastMqttConnectionAttemptTime = 0;
+
+  mqttClient.disconnect();
+  isMqttConnected = false;
   
   isMqttEnabled = false;
 }
