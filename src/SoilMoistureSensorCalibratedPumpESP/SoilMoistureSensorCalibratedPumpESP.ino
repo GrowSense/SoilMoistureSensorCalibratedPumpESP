@@ -18,17 +18,17 @@ void setup()
 {
   Serial.begin(9600);
 
-  Serial.println("Starting WiFi irrigator");
-
   EEPROM.begin(512);
 
-  //checkCommand();
+  delay(200);
+
+  Serial.println("Starting WiFi irrigator");
+
+  checkCommand();
 
   loadDeviceNameFromEEPROM();
 
   serialPrintDeviceInfo();
-
-  Serial.println("Device started...");
 
   setupSoilMoistureSensor();
 
@@ -37,6 +37,8 @@ void setup()
   serialOutputIntervalInSeconds = soilMoistureSensorReadingIntervalInSeconds;
 
   delay(200);
+
+  Serial.println("Device started...");
 }
 
 void loop()

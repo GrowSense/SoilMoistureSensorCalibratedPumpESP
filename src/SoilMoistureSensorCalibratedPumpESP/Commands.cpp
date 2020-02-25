@@ -13,7 +13,7 @@ void checkCommand()
     Serial.println("Checking incoming serial commands");
   }*/
 
-  if (checkMsgReady())
+  while (checkMsgReady())
   {
     char* msg = getMsg();
        
