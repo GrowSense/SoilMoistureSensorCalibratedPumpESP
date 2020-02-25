@@ -73,6 +73,19 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
       WaitForMessageReceived (command);
     }
 
+    public void SendDeviceCommands (params string[] commands)
+    {
+      var fullCommand = "";
+      foreach (var command in commands)
+        fullCommand += command + ";";
+
+      WriteToDevice (fullCommand);
+
+      foreach (var command in commands)
+        WaitForMessageReceived (command);
+    }
+
+
     public void WaitForMessageReceived (string message)
     {
       Console.WriteLine ("");
