@@ -187,6 +187,14 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
 
     public void HandleConnectionIOException (string deviceLabel, string devicePort, int deviceBaudRate, Exception exception)
     {
+      Console.WriteLine ("");
+      Console.WriteLine ("Error connecting to serial device!");
+      Console.WriteLine ("  Device label: " + deviceLabel);
+      Console.WriteLine ("  Device port: " + devicePort);
+      Console.WriteLine ("  Device baud rate: " + deviceBaudRate);
+      Console.WriteLine ("  " + exception.Message);
+      Console.WriteLine ("");
+
       if (exception.Message == "No such file or directory")
         throw new Exception ("The " + deviceLabel + " device not found on port: " + devicePort + ". Please ensure it's connected via USB and that the port name is set correctly.", exception);
       else if (exception.Message == "Inappropriate ioctl for device")
@@ -595,7 +603,7 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
       Console.WriteLine ("  Min allowable value: " + minAllowableValue);
 
       var isWithinRange = actualValue <= maxAllowableValue &&
-                                actualValue >= minAllowableValue;
+                          actualValue >= minAllowableValue;
 
       Console.WriteLine ("  Is within range: " + isWithinRange);
 
@@ -691,7 +699,7 @@ namespace SoilMoistureSensorCalibratedPumpESP.Tests.Integration
       if (!disposedValue) {
         if (disposing) {
           if (TestContext.CurrentContext.Result.State == TestState.Error
-                        || TestContext.CurrentContext.Result.State == TestState.Failure) {
+              || TestContext.CurrentContext.Result.State == TestState.Failure) {
             Console.WriteLine ("Complete device serial output...");
             ConsoleWriteSerialOutput (FullDeviceOutput);
           }
