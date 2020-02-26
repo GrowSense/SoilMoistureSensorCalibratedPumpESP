@@ -65,6 +65,7 @@ pipeline {
                 sh 'sh upload-simulator.sh ${IRRIGATOR_ESP_SIMULATOR_PORT}'
                 sh 'echo "Ensuring the simulator isn\'t resetting the target device..."'
                 sh 'sh send-serial-command.sh "M4:2" ${IRRIGATOR_ESP_SIMULATOR_PORT}'
+                sh 'sleep 1'
             }
         }
         stage('Upload') {
